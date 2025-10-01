@@ -1,5 +1,12 @@
 # Procédure de Déploiement Grégory MAJSTOROVIC
 
+## Se connecter à l'application
+
+admin@ht-buggy-wapp.fr
+user@ht-buggy-wapp.fr
+
+mot de passe : azertyuiop
+
 ## Installation aapanel
 
 Commande :
@@ -12,8 +19,8 @@ Une fois installé j'ai clique sur le lien "aaPanel Internal Address: <https://1
 
 Et il me donne les identifiants :
 
-- user : 8yua1sar
-- password : de31f18b
+- user : **8yua1sar**
+- password : **de31f18b**
 
 Il m'ouvre le dashboard de aapanel, je me connecte avec les identifiants et ensuite j'ai cliqué sur le "One click" pour installé le pack LNMP.
 
@@ -22,14 +29,7 @@ Il m'ouvre le dashboard de aapanel, je me connecte avec les identifiants et ensu
 Sur aapanel je me rend dans Website puis je clique sur "add site".
 Dans le formulaire, je met mon nom de domaine "majstorovic-dfsgr1.local" et je créer la base de données mysql
 
-Identifiants :
-
-user : sql_172_17_4_14
-password : 65f1cc91863e88
-
-### Activation SSL
-
-Dans la configuration du site, je vais dans l'onglet "SSL" puis clique sur "Let's Encrypt" et enfin je sélectionne mon domaine.
+Pour que toutes les pages fonctionnent, j'ai du aller dans URL rewrite et sélectionner Laravel.
 
 ## Gitcliff
 
@@ -104,4 +104,10 @@ et sur serveur je fais :
 
 ```bash
 bash deploy.sh <version>
+```
+
+## Swagger
+
+```bash
+composer require zircote/swagger-php
 ```
