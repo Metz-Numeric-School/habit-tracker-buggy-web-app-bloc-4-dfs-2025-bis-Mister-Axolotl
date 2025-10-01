@@ -24,7 +24,7 @@ Dans le formulaire, je met mon nom de domaine "majstorovic-dfsgr1.local" et je c
 
 Identifiants :
 
-user : sql_gregory
+user : sql_172_17_4_14
 password : 65f1cc91863e88
 
 ### Activation SSL
@@ -88,4 +88,20 @@ git --work-tree=/www/wwwroot/gregory --git-dir=/var/depot_git checkout -f $1
 
 ## Méthode de déploiement
 
-Todo...
+Pour déployer, en local je fais :
+
+```bash
+git remote add vps root@172.17.4.14:/var/depot_git
+```
+
+puis
+
+```bash
+git push -u vps <version>
+```
+
+et sur serveur je fais :
+
+```bash
+bash deploy.sh <version>
+```
