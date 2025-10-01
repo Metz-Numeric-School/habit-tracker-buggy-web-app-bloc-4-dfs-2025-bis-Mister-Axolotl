@@ -17,18 +17,6 @@ Et il me donne les identifiants :
 
 Il m'ouvre le dashboard de aapanel, je me connecte avec les identifiants et ensuite j'ai cliqué sur le "One click" pour installé le pack LNMP.
 
-## Depot git sur le SSH
-
-Je vais initialiser le repo git sur le serveur.
-Pour ça je fais :
-
-```bash
-cd /var
-mkdir depot_git
-cd depot_git
-git init --bare
-```
-
 ## Création du site sur aapanel
 
 Sur aapanel je me rend dans Website puis je clique sur "add site".
@@ -43,9 +31,60 @@ password : 65f1cc91863e88
 
 Dans la configuration du site, je vais dans l'onglet "SSL" puis clique sur "Let's Encrypt" et enfin je sélectionne mon domaine.
 
+## Gitcliff
+
+Gitcliff étant déjà initialisé dans le projet, j'ai juste fait :
+
+```bash
+git cliff --bump -o CHANGELOG.md
+```
+
+pour mettre à jour le fichier changelog après avoir commit, j'ai aussi créer un tag 1.0.0 avec la commande
+
+```bash
+git tag 1.0.0
+```
+
+```bash
+git remote add vps root@172.17.4.14:/var/depot_git
+```
+
+Pousser :
+
+```bash
+git push vps <version>
+```
+
+puis yes pour accepter.
+
 ## Préparation du VPS
 
-Todo...
+### Depot git sur le SSH
+
+Je vais initialiser le repo git sur le serveur.
+Pour ça je fais :
+
+```bash
+cd /var
+mkdir depot_git
+cd depot_git
+git init --bare
+```
+
+Création du deploy.sh
+
+```bash
+touch deploy.sh
+nano deploy.sh
+```
+
+Et dedans je met :
+
+```sh
+git --work-tree=/www/wwwroot/gregory --git-dir=/var/depot_git checkout -f $1
+```
+
+"gregory" c'est le nom du site que j'ai mis sur aapanel
 
 ## Méthode de déploiement
 
