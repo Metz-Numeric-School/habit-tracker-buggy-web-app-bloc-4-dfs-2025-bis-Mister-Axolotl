@@ -34,6 +34,8 @@ class RegisterController extends AbstractController
             if(empty($user['password']))
                 $errors['password'] = 'Le mot de passe est obligatoire';
 
+            $hashed_password = password_hash($user['password'], PASSWORD_DEFAULT);
+            $user['password'] = $hashed_password;
 
             if(count($errors) == 0) {
                 // Par défaut l'utilisateur n'est pas admin
